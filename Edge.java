@@ -1,47 +1,20 @@
 
-import java.util.ArrayList;
-
-public class Graph {
+public class Edge {
 	
-	private ArrayList<int> _vertices;
-	private ArrayList<ArrayList<>> _edges;
+	private int _destination;
+	private int _cost;
+	private int _length;
 	
 
-	public Graph(int vertices) {
-		
+	public Edge(int destination) {
+		Edge(destination, 1, 1);
 	}
 	
-	public addEdge(int source, int destination, int cost, int length) {
-		
+	public Edge(int destination, int cost, int length) {
+		_destination = destination;
+		_cost = cost;
+		_length = length;
 	}
+	
 	
 }
-
-
-from igraph import *
-
-def main():
-
-	file = open("files/paris_54000.txt",'r')
-	input = file.readlines()
-	params = input[0].split()
-	N = int(params[0])
-	M = int(params[1])
-	T = int(params[2])
-	C = int(params[3])
-	S = int(params[4])
-	junctions = input[1:N+1]
-	streets = input[N+1:]
-	
-	
-	g = Graph()
-	
-	g.add_vertices(N)
-	
-	print(g)
-
-
-
-
-if __name__ == '__main__':
-	main()
