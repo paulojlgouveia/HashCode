@@ -46,9 +46,9 @@ public class Node {
 		_edges = edges;
 	}
 	
-	public getLatitude() { return _latitude; }
-	public getLongitude() { return _longitude; }
-	public getEdges() { return _edges; }
+	public int getLatitude() { return _latitude; }
+	public int getLongitude() { return _longitude; }
+	public ArrayList getEdges() { return _edges; }
 	
 	
 	public addEdge(int destination, int cost, int length) {

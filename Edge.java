@@ -17,9 +17,9 @@ public class Edge {
 	}
 	
 	
-	public getDestination() { return _destination; }
-	public getCost() { return _cost; }
-	public getLength() { return _length; }
+	public int getDestination() { return _destination; }
+	public int getCost() { return _cost; }
+	public int getLength() { return _length; }
 	
 	
 	
