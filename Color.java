@@ -1,5 +1,5 @@
 
-
+/*
 
 public enum Color {
 	PURPLE('\033[95m'),
