@@ -1,7 +1,9 @@
 
+from igraph import *
+
 def main():
 
-	file = open("paris_54000.txt",'r')
+	file = open("files/paris_54000.txt",'r')
 	input = file.readlines()
 	params = input[0].split()
 	N = int(params[0])
@@ -11,6 +13,14 @@ def main():
 	S = int(params[4])
 	junctions = input[1:N+1]
 	streets = input[N+1:]
+	
+	
+	g = Graph()
+	
+	g.add_vertices(N)
+	
+	print(g)
+
 
 
 
