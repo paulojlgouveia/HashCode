@@ -17,15 +17,15 @@ public class Graph {
 	
 	
 	
-	public addNode(latitude, longitude) {
+	public void addNode(latitude, longitude) {
 		_nodes.add(new Node(latitude, longitude));
 	}
 	
-	public add1Edge(int source, int destination, int cost, int length) {
+	public void add1Edge(int source, int destination, int cost, int length) {
 		_nodes[source].addEdge(destination, cost, length);
 	}
 	
-	public add2Edge(int source, int destination, int cost, int length) {
+	public void add2Edge(int source, int destination, int cost, int length) {
 		_nodes[source].addEdge(destination, cost, length);
 		_nodes[destination].addEdge(source, cost, length);
 	}

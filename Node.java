@@ -51,7 +51,7 @@ public class Node {
 	public ArrayList getEdges() { return _edges; }
 	
 	
-	public addEdge(int destination, int cost, int length) {
+	public void addEdge(int destination, int cost, int length) {
 		_edges.add(new Edge(destination, cost, length));
 	}
 	
