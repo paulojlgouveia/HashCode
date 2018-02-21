@@ -4,7 +4,7 @@ import java.util.*;
 public class InputReader{
 
     private int N,M,T,C,S;
-    private String fileName = "paris_54000.txt";
+    private String fileName = "files/paris_54000.txt";
 
     private String[] params;
     private List<String> junctions = new ArrayList<String>();
