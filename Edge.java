@@ -17,4 +17,10 @@ public class Edge {
 	}
 	
 	
+	public getDestination() { return _destination; }
+	public getCost() { return _cost; }
+	public getLength() { return _length; }
+	
+	
+	
 }

@@ -1,5 +1,6 @@
 
-import java.util.ArrayList;
+import Node;
+
 
 public class Graph {
 	
@@ -14,6 +15,11 @@ public class Graph {
 		_nodes = new ArrayList<Node>(nodes);
 	}
 	
+	
+	
+	public addNode(latitude, longitude) {
+		_nodes.add(new Node(latitude, longitude));
+	}
 	
 	public add1Edge(int source, int destination, int cost, int length) {
 		_nodes[source].addEdge(destination, cost, length);
