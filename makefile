@@ -4,9 +4,9 @@ clean:
 
 
 compile: clean
-	javac *.java
+	@javac *.java
 
 
-run:
+run: compile
 	@java Main
 	@echo
