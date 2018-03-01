@@ -6,6 +6,10 @@ public class Car{
 	public int y;
 	public Ride ride;
 
+	public Car(int x, int y){
+		Car(x,y,null);
+	}
+
 	public Car(int x, int y, Ride ride){
 		this.x = x;
 		this.y = y;
