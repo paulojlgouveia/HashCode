@@ -61,6 +61,11 @@ public class Main{
 		List<Ride> willRemove = new ArrayList<Ride>(totalRides);
 
 		for(int t = 1; t < time; t++){
+			//update cars
+			for (Car car : cars) {
+				if(car.earliestFinish(t,car.getRide()))
+			}
+			//check for rides
 			for (Ride ride : rides) {
 				Car bestCar = null;	
 				int bestDist = 0;	
