@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Ride{
 	public int startX;
+	public int id;
 	public int startY;
 	public int endX;
 	public int endY;
@@ -14,7 +15,8 @@ public class Ride{
 	public int duration;
 
 	
-	public Ride(int startX, int startY, int endX, int endY, int earliestStart, int latestFinish){
+	public Ride(int id, int startX, int startY, int endX, int endY, int earliestStart, int latestFinish){
+		this.id = id;
 		this.startX = startX;
 		this.startY = startY;
 		this.endX = endX;
@@ -32,6 +34,7 @@ public class Ride{
 	public int getEarliestStart(){ return this.earliestStart; }
 	public int getLatestFinish(){ return this.latestFinish; }
 	public int getPickup() { return this.pickup; }
+	public int getId(){ return this.id;}
 	
 	
 	public void setStartX(int startX){ this.startX = startX; }

@@ -14,25 +14,26 @@ public class Main{
 		List<Car> cars = new ArrayList<Car>(totalCars);
 		
 		for (int i = 0; i < totalCars; i++) {
-			cars.add(new Car(0, 0));
+			cars.add(new Car(i+1, 0, 0));
 		}
 		
-		for (Car car : cars) {
-			System.out.println(car.toString());
-		}
+
 		
 		
 		List<Ride> rides = new ArrayList<Ride>(totalRides);
-		
+		int count = 0;
 		for (String str : ir.getRides()) {
+
 			String parse[] = str.split(" ");
 			
-			rides.add(new Ride(Integer.parseInt(parse[0]),
-								Integer.parseInt(parse[1]),
-								Integer.parseInt(parse[2]),
-								Integer.parseInt(parse[3]),
-								Integer.parseInt(parse[4]),
-								Integer.parseInt(parse[5])));
+			rides.add(new Ride(count,
+							Integer.parseInt(parse[0]),
+							Integer.parseInt(parse[1]),
+							Integer.parseInt(parse[2]),
+							Integer.parseInt(parse[3]),
+							Integer.parseInt(parse[4]),
+							Integer.parseInt(parse[5])));
+			count++;
 		}
 
 		for(int i = 0; i < Math.min(cars.size(),rides.size()); i++){
@@ -40,6 +41,7 @@ public class Main{
 
 		}
 
+		List<Ride> willRemove = new ArrayList<Ride>(totalRides);
 
 		for(int t = 1; t < time; t++){
 			for (Ride ride : rides) {
@@ -54,14 +56,20 @@ public class Main{
 					if(car.earliestFinish(t,ride) < bestDist && car.getRide() == null){
 						bestCar = car;
 						bestDist = car.earliestFinish(t,ride);
+
 					}
-					
 				}
-				bestCar.setRide(ride);
+				bestCar.addRide(ride);
+				willRemove.add(ride);
+				
+			}	
+			for(Ride ride: willRemove){
+				rides.remove(ride);
 			}
-			
 		}
-		
+		for(Car car: cars){
+			System.out.println(car.toOutput());
+		}
 		
 		
 	}
