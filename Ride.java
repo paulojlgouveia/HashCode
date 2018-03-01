@@ -54,10 +54,6 @@ public class Ride{
 		this.earliestStart = earliestStart;
 	}
 
-	public int getEarliestStart(){
-		return this.earliestStart;
-	}
-
 	public void setLatestFinish(int latestFinish){
 		this.latestFinish = latestFinish;
 	}

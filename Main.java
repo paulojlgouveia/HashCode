@@ -10,24 +10,24 @@ public class Main{
 		int totalRides = ir.getParams().get("N");
 		
 		
-		ArrayList<Car> cars = ArrayList<Cars>(totalCars)
+		List<Car> cars = new ArrayList<Car>(totalCars);
 		
-		for (int i = 0; i++ ; i < totalCars) {
-			cars.add(new Car(0, 0))
+		for (int i = 0; i < totalCars; i++) {
+			cars.add(new Car(0, 0));
 		}
 		
 		
-		ArrayList<Ride> rides = ArrayList<Ride>(totalRides)
+		List<Ride> rides = new ArrayList<Ride>(totalRides);
 		
-		for String str in ir.getRides() {
-			String parse[] = str.split(' ');
+		for (String str : ir.getRides()) {
+			String parse[] = str.split(" ");
 			
 			rides.add(new Ride(Integer.parseInt(parse[0]),
 								Integer.parseInt(parse[1]),
 								Integer.parseInt(parse[2]),
 								Integer.parseInt(parse[3]),
 								Integer.parseInt(parse[4]),
-								Integer.parseInt(parse[5])))
+								Integer.parseInt(parse[5])));
 		}
 		
 	}

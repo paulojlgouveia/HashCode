@@ -7,7 +7,7 @@ public class Car{
 	public Ride ride;
 
 	public Car(int x, int y){
-		Car(x,y,null);
+		this(x,y,null);
 	}
 
 	public Car(int x, int y, Ride ride){
