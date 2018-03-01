@@ -40,15 +40,29 @@ public class Main{
 
 		}
 
+
 		for(int t = 1; t < time; t++){
-			for(Car car : cars){
-				
+			for (Ride ride : rides) {
+				Car bestCar = null;	
+				int bestDist = 0;	
+				for (Car car : cars) {
+					if(bestCar == null){
+						bestCar = car;
+						bestDist = car.earliestFinish(t,ride);
+						continue;
+					} 
+					if(car.earliestFinish(t,ride) < bestDist && car.getRide() == null){
+						bestCar = car;
+						bestDist = car.earliestFinish(t,ride);
+					}
+					
+				}
+				bestCar.setRide(ride);
 			}
+			
 		}
 		
-		for (Ride ride : rides) {
-			System.out.println(ride.toString());
-		}
+		
 		
 	}
 }
