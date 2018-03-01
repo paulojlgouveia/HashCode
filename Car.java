@@ -32,7 +32,7 @@ public class Car{
 	
 	
 	public String toOutput(){
-		String ret = "" + id;
+		String ret = "" + rides.size();
 		for(Ride ride : rides){
 			ret += " " + ride.getId();
 		}

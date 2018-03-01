@@ -56,12 +56,11 @@ public class Main{
 					if(car.earliestFinish(t,ride) < bestDist && car.getRide() == null){
 						bestCar = car;
 						bestDist = car.earliestFinish(t,ride);
-
 					}
 				}
 				bestCar.addRide(ride);
+				bestCar.setRide(ride);
 				willRemove.add(ride);
-				
 			}	
 			for(Ride ride: willRemove){
 				rides.remove(ride);
