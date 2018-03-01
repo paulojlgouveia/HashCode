@@ -17,6 +17,10 @@ public class Main{
 			cars.add(new Car(0, 0));
 		}
 		
+		for (Car car : cars) {
+			System.out.println(car.toString());
+		}
+		
 		
 		List<Ride> rides = new ArrayList<Ride>(totalRides);
 		
@@ -40,6 +44,10 @@ public class Main{
 			for(Car car : cars){
 
 			}
+		}
+		
+		for (Ride ride : rides) {
+			System.out.println(ride.toString());
 		}
 		
 	}
