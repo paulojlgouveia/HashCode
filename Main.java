@@ -63,7 +63,9 @@ public class Main{
 		for(int t = 1; t < time; t++){
 			//update cars
 			for (Car car : cars) {
-				if(car.earliestFinish(t,car.getRide()))
+				if(car.getRide() != null && car.earliestFinish(t,car.getRide()) == 0  ){
+					car.setRide(null);
+				}
 			}
 			//check for rides
 			for (Ride ride : rides) {

@@ -4,7 +4,7 @@ import java.util.*;
 public class InputReader{
 
     private Map<String,Integer> _paramsMap;
-    private String _fileName = "input/a_example.in";
+    private String _fileName = "input/b_should_be_easy.in";
 
     private List<String> _rides = new ArrayList<String>();
 
