@@ -4,10 +4,9 @@ import java.util.*;
 public class InputReader{
 
     private Map<String,Integer> _paramsMap;
-    private String _fileName = "files/paris_54000.txt";
+    private String _fileName = "input/a_example.in";
 
-    private List<String> junctions = new ArrayList<String>();
-    private List<String> streets = new ArrayList<String>();
+    private List<String> _rides = new ArrayList<String>();
 
 	public InputReader(){	
 
@@ -29,25 +28,21 @@ public class InputReader{
             if((line = bufferedReader.readLine()) != null) {
 				params = line.split(" ");
 
-				_paramsMap.put("N",Integer.parseInt(params[0]));
-                _paramsMap.put("M",Integer.parseInt(params[1]));
-                _paramsMap.put("T",Integer.parseInt(params[2]));
-                _paramsMap.put("C",Integer.parseInt(params[3]));
-                _paramsMap.put("S",Integer.parseInt(params[4]));
+				_paramsMap.put("R",Integer.parseInt(params[0]));
+                _paramsMap.put("C",Integer.parseInt(params[1]));
+                _paramsMap.put("F",Integer.parseInt(params[2]));
+                _paramsMap.put("N",Integer.parseInt(params[3]));
+                _paramsMap.put("B",Integer.parseInt(params[4]));
+                _paramsMap.put("T",Integer.parseInt(params[5]));
             }
 
             for(int i = 1; i <=_paramsMap.get("N");i++){
             	if((line = bufferedReader.readLine()) != null) {
-					junctions.add(line);
+					_rides.add(line);
             	}
             }
 
-            for(int i = 1; i <=_paramsMap.get("M");i++){
-            	if((line = bufferedReader.readLine()) != null) {
-					streets.add(line);
-            	}
-            }
-     
+
             bufferedReader.close();         
         }
         catch(FileNotFoundException ex) {
@@ -63,12 +58,9 @@ public class InputReader{
 
 	}
 
-    public List<String> getJunctions(){
-        return junctions;
-    }
 
-    public List<String> getStreets(){
-        return streets;
+    public List<String> getRides(){
+        return _rides;
     }
 
     public Map<String,Integer> getParams(){
