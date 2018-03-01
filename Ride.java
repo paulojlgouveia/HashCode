@@ -11,7 +11,6 @@ public class Ride{
 	public int latestFinish;
 	
 	public int pickup;
-	public int timeToFinish;
 	public int duration;
 
 	
@@ -23,7 +22,7 @@ public class Ride{
 		this.earliestStart = earliestStart;
 		this.latestFinish = latestFinish;
 		
-		this.duration = Search.
+		this.duration = Search.manhattanDistance(startX, startY, endX, endY);
 	}
 	
 	public int getStartX(){ return this.startX; }
@@ -32,6 +31,8 @@ public class Ride{
 	public int getEndY(){ return this.endY; }
 	public int getEarliestStart(){ return this.earliestStart; }
 	public int getLatestFinish(){ return this.latestFinish; }
+	public int getPickup() { return this.pickup; }
+	
 	
 	public void setStartX(int startX){ this.startX = startX; }
 	public void setEndX(int endX){ this.endX = endX; }
@@ -39,6 +40,9 @@ public class Ride{
 	public void setEndY(int endY){ this.endY = endY; }
 	public void setEarliestStart(int earliestStart){ this.earliestStart = earliestStart; }
 	public void setLatestFinish(int latestFinish){ this.latestFinish = latestFinish; }
+	public void setPickup(int currentTimeStep) { this.pickup = currentTimeStep; }
+	
+	
 	
 	public String toString() {
 		return "RIDE - xi: " + this.startX + ", xf: " + this.endX
@@ -47,8 +51,7 @@ public class Ride{
 	}
 	
 	public int getTimeToFinish(int currentTimeStep) {
-		timeToFinish = currentTimeStep 
-		return 
+		return (this.pickup + this.duration) - currentTimeStep;
 	}
 }
 

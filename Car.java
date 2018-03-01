@@ -37,9 +37,9 @@ public class Car{
 		}
 	}
 	
-	int earliestPickup(int currentTimeStep) {
-		
-	}
+// 	int earliestPickup(int currentTimeStep) {
+// 		
+// 	}
 	
 	
 	

@@ -35,8 +35,8 @@ public class Main{
 								Integer.parseInt(parse[5])));
 		}
 
-		for(int i = 0; i < Math.min(cars.size(),rides.size()); r++){
-			cars.get(i).SetRide(rides.get(i));
+		for(int i = 0; i < Math.min(cars.size(),rides.size()); i++){
+			cars.get(i).setRide(rides.get(i));
 
 		}
 
