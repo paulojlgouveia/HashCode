@@ -1,10 +1,27 @@
 
+import java.io.*;
 import java.util.*;
 import java.lang.*;
 
 public class Main{
 
-	public static void main(String args[]){
+	
+	public static void writeToFile(List<Car> cars) throws IOException {
+		String str = "";
+		
+		for (Car car : cars) {
+			str = str + car.toOutput() + "\n";
+		}
+		
+		FileOutputStream outputStream = new FileOutputStream("output.txt");
+		byte[] strToBytes = str.getBytes();
+		outputStream.write(strToBytes);
+		
+		outputStream.close();
+	}
+	
+
+	public static void main(String args[]) throws IOException {
 		InputReader ir = new InputReader();
 		
 		int totalCars = ir.getParams().get("F");
@@ -69,6 +86,8 @@ public class Main{
 		for(Car car: cars){
 			System.out.println(car.toOutput());
 		}
+		
+		writeToFile(cars);
 		
 		
 	}
