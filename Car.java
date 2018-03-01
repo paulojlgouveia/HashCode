@@ -37,12 +37,9 @@ public class Car{
 		}
 	}
 	
-// 	int earliestPickup(int currentTimeStep) {
-// 		
-// 	}
-	
-	
-	
+	int earliestFinish(int currentTimeStep, Ride possibleRide) {
+		return this.ride.getTimeToFinish(currentTimeStep) + possibleRide.getTimeToFinish(currentTimeStep);
+	}
 
 
 }

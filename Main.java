@@ -42,7 +42,7 @@ public class Main{
 
 		for(int t = 1; t < time; t++){
 			for(Car car : cars){
-
+				
 			}
 		}
 		

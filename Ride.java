@@ -21,7 +21,7 @@ public class Ride{
 		this.endY = endY;
 		this.earliestStart = earliestStart;
 		this.latestFinish = latestFinish;
-		
+		this.pickup = 0;
 		this.duration = Search.manhattanDistance(startX, startY, endX, endY);
 	}
 	
