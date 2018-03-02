@@ -13,7 +13,7 @@ public class Main{
 			str = str + car.toOutput() + "\n";
 		}
 		
-		FileOutputStream outputStream = new FileOutputStream("output.txt");
+		FileOutputStream outputStream = new FileOutputStream("outputE.txt");
 		byte[] strToBytes = str.getBytes();
 		outputStream.write(strToBytes);
 		
