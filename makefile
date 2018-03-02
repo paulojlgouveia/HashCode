@@ -1,12 +1,13 @@
 
 clean:
-	@rm -f *.class
+	clear
+	@rm -f src/*.class
 
 
 compile: clean
-	@javac *.java
+	@javac src/*.java
 
 
 run: compile
-	@java Main
+	@java -cp "src/" Main
 	@echo

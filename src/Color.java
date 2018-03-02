@@ -1,19 +1,17 @@
 
-/*
-
 public enum Color {
-	PURPLE('\033[95m'),
-	BLUE('\033[94m'),
-	CYAN('\033[96m'),
-	GREEN('\033[92m'),
-	YELLOW('\033[93m'),
-	RED('\033[91m'),
+	PURPLE("\033[95m"),
+	BLUE("\033[94m"),
+	CYAN("\033[96m"),
+	GREEN("\033[92m"),
+	YELLOW("\033[93m"),
+	RED("\033[91m"),
 	
-	BOLD('\033[1m'),
-	UNDERLINE('\033[4m'),
-	ITALIC('\x1B[3m'),
+	BOLD("\033[1m"),
+	UNDERLINE("\033[4m"),
+	ITALIC("\033[3m"),
 	
-	END('\033[0m');
+	END("\033[0m");
 	
 	
 	private String _colorCode;
@@ -23,16 +21,16 @@ public enum Color {
 	}
 	
 	
-	public purple(string) { return Color.PURPLE + string + Color.END; }
-	public blue(string) { return Color.BLUE + string + Color.END; }
-	public cyan(string) { return Color.CYAN + string + Color.END; }
-	public green(string) { return Color.GREEN + string + Color.END; }
-	public red(string) { return Color.RED + string + Color.END; }
-	public yellow(string) { return Color.YELLOW + string + Color.END; }
+	public String purple(String string) { return Color.PURPLE + string + Color.END; }
+	public String blue(String string) { return Color.BLUE + string + Color.END; }
+	public String cyan(String string) { return Color.CYAN + string + Color.END; }
+	public String green(String string) { return Color.GREEN + string + Color.END; }
+	public String red(String string) { return Color.RED + string + Color.END; }
+	public String yellow(String string) { return Color.YELLOW + string + Color.END; }
 	
-	public italic(string) { return Color.ITALIC + string + Color.END; }
-	public underline(string) { return Color.UNDERLINE + string + Color.END; }
-	public bold(string) { return Color.BOLD + string + Color.END; }
+	public String italic(String string) { return Color.ITALIC + string + Color.END; }
+	public String underline(String string) { return Color.UNDERLINE + string + Color.END; }
+	public String bold(String string) { return Color.BOLD + string + Color.END; }
 	
 	
 }
