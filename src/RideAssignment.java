@@ -1,16 +1,20 @@
 
-import java.util.*;
-import java.lang.*;
+import java.util.List;
+import java.util.Queue;
+import java.util.PriorityQueue;
+import java.util.Comparator;
 
 public class RideAssignment {
 	
-	public static int manhattanDistance(int x1, int y1, int x2, int y2) {
-		return Math.abs(x1 - x2) + Math.abs(y1-y2);
-	}
-	
-	
-	
 	///// comparator classes /////
+	
+	public static Comparator<Car> TravelDistanceComparator = new Comparator<Car>(){
+		@Override
+		public int compare(Car c1, Car c2) {
+            return (int) (c1.getTravelledDistance() - c2.getTravelledDistance());
+        }
+	};
+	
 	
 	public static Comparator<Ride> LatestFinishComparator = new Comparator<Ride>(){
 		@Override
@@ -49,7 +53,6 @@ public class RideAssignment {
 
 	public static void evenOrderedByFirstToEnd(List<Car> cars, List<Ride> rides) {
 		
-		// fyi PriorityQueue implements min/maxHeap => O(log(n)) operations
 		Queue<Ride> orderedRides = new PriorityQueue<>(rides.size(), LatestFinishComparator);
 		for (Ride ride : rides)
 			orderedRides.add(ride);
@@ -80,6 +83,67 @@ public class RideAssignment {
 		}
 	}
 	
+	
+	public static void shortestTravellOrderedByFirstToEnd(List<Car> cars, List<Ride> rides) {
+		
+		Queue<Ride> orderedRides = new PriorityQueue<>(rides.size(), LatestFinishComparator);
+		for (Ride ride : rides)
+			orderedRides.add(ride);
+			
+		Queue<Car> orderedCars= new PriorityQueue<>(cars.size(), TravelDistanceComparator);
+		for (Car car: cars)
+			orderedCars.add(car);
+		
+		Car car = null;
+		while (orderedRides.size() > 0) {
+			car = orderedCars.remove();
+			car.addRide(orderedRides.remove());
+			orderedCars.add(car);
+		}
+	}
+	
+	
+	public static void closestOrderedByFirstToEnd(List<Car> cars, List<Ride> rides) {
+		
+		Queue<Ride> orderedRides = new PriorityQueue<>(rides.size(), LatestFinishComparator);
+		for (Ride ride : rides)
+			orderedRides.add(ride);
+			
+		Ride ride = null;
+		int xi, yi;
+		while (orderedRides.size() > 0) {
+			ride = orderedRides.remove();
+			xi = ride.getStartX();
+			yi = ride.getStartY();
+			
+			Car bestCar = cars.get(0);
+			int delta = Aux.manhattanDistance(bestCar.getX(), bestCar.getY(), xi, yi);
+			int bestDistance = delta;
+			
+			for (Car car : cars) {
+				delta = Aux.manhattanDistance(car.getX(), car.getY(), xi, yi);
+				
+				if (delta < bestDistance) {
+					bestDistance = delta;
+					bestCar = car;
+				}
+			}
+			
+			bestCar.addRide(ride);
+		}
+		
+		
+		Queue<Car> orderedCars= new PriorityQueue<>(cars.size(), TravelDistanceComparator);
+		for (Car car: cars)
+			orderedCars.add(car);
+		
+		Car car = null;
+		while (orderedRides.size() > 0) {
+			car = orderedCars.remove();
+			car.addRide(orderedRides.remove());
+			orderedCars.add(car);
+		}
+	}
 
 
 }

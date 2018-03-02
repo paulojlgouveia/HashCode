@@ -1,7 +1,4 @@
 
-import java.io.*;
-import java.util.*;
-
 public class Ride {
 	
 	private int _id;
@@ -10,21 +7,6 @@ public class Ride {
 	private int _latestFinish;
 	private int _duration;
 	
-	private int _pickup;
-
-	
-	public Ride(int id, int xi, int yi, int xf, int yf, int es, int lf) {
-		_id = id;
-		_xi = xi;
-		_yi = yi;
-		_xf = xf;
-		_yf = yf;
-		_earliestStart = es;
-		_latestFinish = lf;
-		
-		_duration = RideAssignment.manhattanDistance(xi, yi, xf, yf);
-// 		_pickup = 0;
-	}
 	
 	public Ride(int id, String rideAsString) {
 		_id = id;
@@ -37,8 +19,19 @@ public class Ride {
 		_earliestStart = Integer.parseInt(parsed[4]);
 		_latestFinish = Integer.parseInt(parsed[5]);
 		
-		_duration = RideAssignment.manhattanDistance(_xi, _yi, _xf, _yf);
-// 		_pickup = 0;
+		_duration = Aux.manhattanDistance(_xi, _yi, _xf, _yf);
+	}
+	
+	public Ride(int id, int xi, int yi, int xf, int yf, int es, int lf) {
+		_id = id;
+		_xi = xi;
+		_yi = yi;
+		_xf = xf;
+		_yf = yf;
+		_earliestStart = es;
+		_latestFinish = lf;
+		
+		_duration = Aux.manhattanDistance(xi, yi, xf, yf);
 	}
 	
 	
@@ -50,7 +43,6 @@ public class Ride {
 	public int getEarliestStart() { return _earliestStart; }
 	public int getLatestFinish() { return _latestFinish; }
 	public int getDuration() { return _duration; }
-	public int getPickup() { return _pickup; }
 	
 	
 	public void setStartX(int startX) { _xi = startX; }
@@ -59,7 +51,6 @@ public class Ride {
 	public void setEndY(int endY) { _yf = endY; }
 	public void setEarliestStart(int earliestStart) { _earliestStart = earliestStart; }
 	public void setLatestFinish(int latestFinish) { _latestFinish = latestFinish; }
-	public void setPickup(int currentTimeStep) { _pickup = currentTimeStep; }
 	
 	
 	
@@ -72,8 +63,8 @@ public class Ride {
 		return out;
 	}
 	
-	public int getTimeToFinish(int currentTimeStep) {
-		return (_pickup + _duration) - currentTimeStep;
-	}
+// 	public int getTimeToFinish(int currentTimeStep) {
+// 		return (_pickup + _duration) - currentTimeStep;
+// 	}
 }
 

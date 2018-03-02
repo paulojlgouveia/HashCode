@@ -58,7 +58,7 @@ class RunnableMain extends Thread {
 		
 		// populate lsit of cars
 		for (int i = 0; i < availableCars; i++)
-			cars.add(new Car(0, 0));
+			cars.add(new Car());
 		
 		// populate lsit of rides
 		int rideId = 0;
@@ -69,7 +69,7 @@ class RunnableMain extends Thread {
 		
 		
 		// FIXME: replace by desired ride distribution function
-		RideAssignment.evenOrderedByFirstToEnd(cars, rides);
+		RideAssignment.closestOrderedByFirstToEnd(cars, rides);
 		
 		
 		writeToFile("output/" + _ir.getOutputFileName(), cars);

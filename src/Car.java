@@ -1,19 +1,24 @@
 
-import java.io.*;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Car{
-	private int _x;
-	private int _y;
+	private int _x, _y;
 	private List<Ride> _rides = null;
+	private int _travelled;
 
+	
+	public Car() {
+		this(0, 0);
+	}
 	
 	public Car(int x, int y) {
 		_x = x;
 		_y = y;
 		_rides = new ArrayList<Ride>();
+		_travelled = 0;
 	}
-
+	
 	public Car(int x, int y, Ride ride) {
 		this(x, y);
 		_rides.add(ride);
@@ -23,6 +28,7 @@ public class Car{
 		_x = x;
 		_y = y;
 		_rides = rides;
+		_travelled = 0;
 	}
 	
 	
@@ -30,12 +36,21 @@ public class Car{
 	public int getX() { return _x; }
 	public int getY() { return _y; }
 	public List<Ride> getRides() { return _rides; }
+	public int getTravelledDistance() { return _travelled; }
 
 	public void setX(int x){ _x = x; }
 	public void setY(int y){ _y = y; }
 	public void setRides(List<Ride> rides){ _rides = rides; }
 	
-	public void addRide(Ride ride) { _rides.add(ride); }
+	public void addRide(Ride ride) {
+		int deltaToRide = Aux.manhattanDistance(_x, _y, ride.getStartX(), ride.getStartY());
+		_travelled += deltaToRide + ride.getDuration();
+		
+		_rides.add(ride);
+		
+		_x = ride.getEndX();
+		_y = ride.getEndY();
+	}
 	
 	
 	public String toString() {
@@ -64,9 +79,8 @@ public class Car{
 	}
 	
 	
-	
 // 	int earliestFinish(int currentTimeStep, Ride possibleRide) {
-// 		return this.ride.getTimeToFinish(currentTimeStep) + possibleRide.getTimeToFinish(currentTimeStep);
+// 		return _rides.getTimeToFinish(currentTimeStep) + possibleRide.getTimeToFinish(currentTimeStep);
 // 	}
 
 
