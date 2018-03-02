@@ -23,8 +23,24 @@ public class Ride {
 		_latestFinish = lf;
 		
 		_duration = RideAssignment.manhattanDistance(xi, yi, xf, yf);
-		_pickup = 0;
+// 		_pickup = 0;
 	}
+	
+	public Ride(int id, String rideAsString) {
+		_id = id;
+		
+		String parsed[] = rideAsString.split(" ");
+		_xi = Integer.parseInt(parsed[0]);
+		_yi = Integer.parseInt(parsed[1]);
+		_xf = Integer.parseInt(parsed[2]);
+		_yf = Integer.parseInt(parsed[3]);
+		_earliestStart = Integer.parseInt(parsed[4]);
+		_latestFinish = Integer.parseInt(parsed[5]);
+		
+		_duration = RideAssignment.manhattanDistance(_xi, _yi, _xf, _yf);
+// 		_pickup = 0;
+	}
+	
 	
 	public int getId() { return _id;}
 	public int getStartX() { return _xi; }

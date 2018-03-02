@@ -1,13 +1,21 @@
-import java.io.*;
-import java.util.*;
+
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 
 public class InputReader {
+    
+    private String _inputFile;
+    private String _expectedOutputFile;
 
     private Map<String,Integer> _paramsMap;
     private List<String> _rides;
-    
-//     private String _inputFile;
-    private String _expectedOutputFile;
 
 	public InputReader(String fileName) {	
 
@@ -18,11 +26,8 @@ public class InputReader {
         String[] params;
         
         try {
-            // FileReader reads text files in the default encoding.
             FileReader fileReader = new FileReader(fileName);
-                
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
                 
             if((line = bufferedReader.readLine()) != null) {
 				params = line.split(" ");
@@ -45,9 +50,8 @@ public class InputReader {
             
             bufferedReader.close();
             
-            int slash = fileName.lastIndexOf("/") + 1;
-            int dot = fileName.lastIndexOf(".");
-            _expectedOutputFile = fileName.substring(slash, dot) + ".out";
+            int slash = fileName.lastIndexOf("/") + 1;;
+            _inputFile = fileName.substring(slash, fileName.length());
             
             
         } catch(FileNotFoundException ex) {
@@ -62,6 +66,11 @@ public class InputReader {
     public Map<String,Integer> getParams() { return _paramsMap; }
     public List<String> getRides(){ return _rides; }
     
-    public String getOutputFileName() { return _expectedOutputFile; }
+    
+    // return expected name for the respective output file
+    public String getOutputFileName() {
+		return _inputFile.substring(0, _inputFile.lastIndexOf(".")) + ".out";
+	}
 
 }
+
