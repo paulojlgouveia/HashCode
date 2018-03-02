@@ -27,14 +27,18 @@ public class Main {
 
 	public static void main(String args[]) {
 		
-		// get all input files
-		ArrayList<InputReader> irList = getAllInputs("input/", ".in");
-		
-		// work on all at the same time, one thread per file
-		for (InputReader ir : irList) {
-			(new RunnableMain(ir)).start();
+		if (args.length > 0) {
+			(new RunnableMain(new InputReader("input/" + args[0]))).start();
+			
+		} else {
+			// get all input files
+			ArrayList<InputReader> irList = getAllInputs("input/", ".in");
+			
+			// work on all at the same time, one thread per file
+			for (InputReader ir : irList) {
+				(new RunnableMain(ir)).start();
+			}
 		}
-		
 	}
 	
 }

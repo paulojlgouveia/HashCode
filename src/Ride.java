@@ -49,6 +49,7 @@ public class Ride {
 	public int getEndY() { return _yf; }
 	public int getEarliestStart() { return _earliestStart; }
 	public int getLatestFinish() { return _latestFinish; }
+	public int getDuration() { return _duration; }
 	public int getPickup() { return _pickup; }
 	
 	

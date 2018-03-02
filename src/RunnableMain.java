@@ -18,11 +18,11 @@ class RunnableMain extends Thread {
 		
 		System.out.println("Discarded rides:");
 		for(Ride ride : discarded)
-			System.out.println(ride.toString());
+			System.out.println("    " + ride.toString());
 		
 		System.out.println("Undistributed rides:");
 		for(Ride ride : undistributed)
-			System.out.println(ride.toString());
+			System.out.println("    " + ride.toString());
 		
 	}
 	
@@ -69,7 +69,7 @@ class RunnableMain extends Thread {
 		
 		
 		// FIXME: replace by desired ride distribution function
-		RideAssignment.even(cars, rides);
+		RideAssignment.evenOrderedByFirstToEnd(cars, rides);
 		
 		
 		writeToFile("output/" + _ir.getOutputFileName(), cars);
