@@ -8,7 +8,6 @@ public class Ride {
 	private int _xi, _xf, _yi, _yf;
 	private int _earliestStart;
 	private int _latestFinish;
-	
 	private int _duration;
 	
 	private int _pickup;
@@ -23,7 +22,7 @@ public class Ride {
 		_earliestStart = es;
 		_latestFinish = lf;
 		
-		_duration = Search.manhattanDistance(xi, yi, xf, yf);
+		_duration = RideAssignment.manhattanDistance(xi, yi, xf, yf);
 		_pickup = 0;
 	}
 	
@@ -49,7 +48,7 @@ public class Ride {
 	
 	public String toString() {
 		String out = "RIDE - ";
-		out += "[" + _xi + "," + _yi + "]" + " -> " + "[" + _xf + "," + _yf + "]"
+		out += "[" + _xi + "," + _yi + "]" + " > " + "[" + _xf + "," + _yf + "]"
 			+ ", earliestStart: " + _earliestStart
 			+ ", latestFinish: " + _latestFinish;
 		

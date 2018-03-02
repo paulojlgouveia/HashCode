@@ -1,4 +1,4 @@
-# HashCode 2017
-# BAZINGA
-something, something, street view
+# HashCode2017
+
+something, something, automated car rides
 

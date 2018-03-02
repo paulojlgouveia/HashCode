@@ -4,26 +4,25 @@ import java.util.*;
 public class InputReader {
 
     private Map<String,Integer> _paramsMap;
-    private List<String> _rides = new ArrayList<String>();
+    private List<String> _rides;
     
+//     private String _inputFile;
     private String _expectedOutputFile;
 
 	public InputReader(String fileName) {	
 
 		String line = null;
-
+		
+		_rides = new ArrayList<String>();
 		_paramsMap = new HashMap<String,Integer>();
         String[] params;
-		String coords;
-
+        
         try {
             // FileReader reads text files in the default encoding.
-            FileReader fileReader = 
-                new FileReader(fileName);
+            FileReader fileReader = new FileReader(fileName);
                 
             // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = 
-                new BufferedReader(fileReader);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
                 
             if((line = bufferedReader.readLine()) != null) {
 				params = line.split(" ");
@@ -36,7 +35,9 @@ public class InputReader {
                 _paramsMap.put("T",Integer.parseInt(params[5]));
             }
             
-            for(int i = 1; i <=_paramsMap.get("N");i++){
+            _rides = new ArrayList<String>(_paramsMap.get("N"));
+            
+            for(int i = 0; i < _paramsMap.get("N"); i++) {
             	if((line = bufferedReader.readLine()) != null) {
 					_rides.add(line);
             	}
@@ -44,9 +45,9 @@ public class InputReader {
             
             bufferedReader.close();
             
-            
-			String name = fileName.substring(fileName.lastIndexOf("/"), fileName.lastIndexOf("."));
-            _expectedOutputFile = name + ".out";
+            int slash = fileName.lastIndexOf("/") + 1;
+            int dot = fileName.lastIndexOf(".");
+            _expectedOutputFile = fileName.substring(slash, dot) + ".out";
             
             
         } catch(FileNotFoundException ex) {

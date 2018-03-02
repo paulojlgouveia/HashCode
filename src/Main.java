@@ -7,19 +7,17 @@ import java.lang.*;
 public class Main {
 
 	public static void printState(List<Car> cars, List<Ride> undistributed, List<Ride> discarded) {
-		for(Car car : cars){
+		for(Car car : cars)
 			System.out.println(car.toString());
-		}
 		
 		System.out.println("Discarded rides:");
-		for(Ride ride : discarded){
-			System.out.println(discarded.toString());
-		}
+		for(Ride ride : discarded)
+			System.out.println(ride.toString());
 		
 		System.out.println("Undistributed rides:");
-		for(Ride ride : undistributed){
-			System.out.println(undistributed.toString());
-		}
+		for(Ride ride : undistributed)
+			System.out.println(ride.toString());
+			
 	}
 	
 	
@@ -59,7 +57,55 @@ public class Main {
 		} catch(IOException ex) {
 			System.out.println("Unable to write to output file '" + outFile + "'");                  
 		}
+		
 	}
+	
+// 	class RunnableMain extends Thread {
+// 		private InputReader _ir;
+// 		
+// 		RunnableMain(InputReader ir) { _ir = ir; }
+// 		
+// 		public void run() {
+// // 			try {
+// 				int availableCars = _ir.getParams().get("F");
+// 				int availableRides = _ir.getParams().get("N");
+// 				int time = _ir.getParams().get("T");
+// 				
+// 				List<Car> cars = new ArrayList<Car>(availableCars);
+// 				List<Ride> rides = new ArrayList<Ride>(availableRides);
+// 				List<Ride> discardedRides = new ArrayList<Ride>();
+// 				
+// 				for (int i = 0; i < availableCars; i++)
+// 					cars.add(new Car(0, 0));
+// 				
+// 				int rideId = 0;
+// 				for (String str : _ir.getRides()) {
+// 					String parse[] = str.split(" ");
+// 					rides.add(new Ride(rideId, Integer.parseInt(parse[0]),
+// 												Integer.parseInt(parse[1]),
+// 												Integer.parseInt(parse[2]),
+// 												Integer.parseInt(parse[3]),
+// 												Integer.parseInt(parse[4]),
+// 												Integer.parseInt(parse[5])));
+// 					rideId++;
+// 				}
+// 				
+// // 				printState(cars, rides, discardedRides);
+// 				
+// 				// FIXME
+// 				RideAssignment.even(cars, rides);
+// 				
+// 				
+// 				writeToFile("output/" + _ir.getOutputFileName(), cars);
+// 				
+// // 			} catch (InterruptedException e) {
+// // 				System.out.println("Computation for " + _ir.getOutputFileName() + "interrupted." );
+// // 			}
+// 			
+// 			System.out.println("finished " + _ir.getOutputFileName());
+// 		}
+// 		
+// 	}
 	
 
 	public static void main(String args[]) {
@@ -95,18 +141,12 @@ public class Main {
 			
 			
 			// FIXME
-			int counter = 0;
-			for (Ride ride : rides) {
-				if (counter >= cars.size())
-					counter = 0;
-					
-				cars.get(counter).addRide(ride);
-				counter++;
-			}
+			RideAssignment.even(cars, rides);
 			
 			
 			
 			writeToFile("output/" + ir.getOutputFileName(), cars);
+			System.out.println("finished " + ir.getOutputFileName());
 		}
 		
 	}
