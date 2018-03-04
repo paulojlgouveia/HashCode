@@ -21,6 +21,6 @@ run: compile
 
 submission: run
 	@rm -f src/*.class
-	zip -r output/HC2017_mul71p4ul05.zip src
+	zip -r output/HC2018_mul71p4ul05.zip src
 	@echo
 	

@@ -12,40 +12,6 @@ class RunnableMain extends Thread {
 		_ir = ir;
 	}
 	
-	public static void printState(List<Car> cars, List<Ride> undistributed, List<Ride> discarded) {
-		for(Car car : cars)
-			System.out.println(car.toString());
-		
-		System.out.println("Discarded rides:");
-		for(Ride ride : discarded)
-			System.out.println("    " + ride.toString());
-		
-		System.out.println("Undistributed rides:");
-		for(Ride ride : undistributed)
-			System.out.println("    " + ride.toString());
-		
-	}
-	
-	
-	public void writeToFile(String outFile, List<Car> cars) {
-		
-		try {
-			String str = "";
-			for (Car car : cars) {
-				str = str + car.toOutput() + "\n";
-			}
-			
-			FileOutputStream outputStream = new FileOutputStream(outFile);
-			byte[] strToBytes = str.getBytes();
-			outputStream.write(strToBytes);
-			
-			outputStream.close();
-			
-		} catch(IOException ex) {
-			System.out.println("Unable to write to output file '" + outFile + "'");                  
-		}
-	}
-	
 	
 	public void run() {
 		int availableCars = _ir.getParams().get("F");
@@ -65,14 +31,14 @@ class RunnableMain extends Thread {
 		for (String str : _ir.getRides())
 			rides.add(new Ride(rideId++, str));
 		
-// 		printState(cars, rides, discardedRides);
+// 		Aux.printState(cars, rides, discardedRides);
 		
 		
 		// FIXME: replace by desired ride distribution function
 		RideAssignment.closestOrderedByFirstToEnd(cars, rides);
 		
 		
-		writeToFile("output/" + _ir.getOutputFileName(), cars);
+		OutputWriter.writeToFile("output/" + _ir.getOutputFileName(), cars);
 		
 		System.out.println("finished " + _ir.getOutputFileName());
 	}
